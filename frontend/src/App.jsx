@@ -10,7 +10,6 @@ function App() {
   const [message, setMessage] = useState('')
   const [activeTab, setActiveTab] = useState('projects')
 
-  // DIRECCION DE INTERNET CORRECTA
   const API_URL = 'https://opal-backend-om1h.onrender.com';
 
   useEffect(() => { loadProjects() }, [])
@@ -32,41 +31,65 @@ function App() {
         body: JSON.stringify(newProject)
       })
       if (res.ok) {
-        setMessage('✅ Project created!')
+        setMessage('✅ Project created successfully!')
         setNewProject({ project_number: '', client_name: '' })
         loadProjects()
         setTimeout(() => setMessage(''), 3000)
       }
-    } catch (e) { setMessage('❌ Error') }
+    } catch (e) { setMessage('❌ Error creating project') }
   }
 
   return (
     <div className="app">
       <header className="header">
         <h1>🏠 Opal Baths & Design</h1>
-        <p>Purchase Order System</p>
+        <p>Purchase Order Management System</p>
       </header>
+
       <div className="tabs">
         <button className={`tab ${activeTab === 'projects' ? 'active' : ''}`} onClick={() => setActiveTab('projects')}>📋 Projects</button>
         <button className={`tab ${activeTab === 'upload' ? 'active' : ''}`} onClick={() => setActiveTab('upload')}>📄 Upload PO</button>
         <button className={`tab ${activeTab === 'excel' ? 'active' : ''}`} onClick={() => setActiveTab('excel')}>📊 Import Excel</button>
         <button className={`tab ${activeTab === 'warehouse' ? 'active' : ''}`} onClick={() => setActiveTab('warehouse')}>📦 Warehouse</button>
       </div>
+
       <main className="main">
         {activeTab === 'projects' && (
           <>
             <section className="card">
-              <h2>📋 New Project</h2>
+              <h2>📋 Create New Project</h2>
               {message && <div className="message">{message}</div>}
               <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Number" value={newProject.project_number} onChange={(e) => setNewProject({...newProject, project_number: e.target.value})} required />
-                <input type="text" placeholder="Client" value={newProject.client_name} onChange={(e) => setNewProject({...newProject, client_name: e.target.value})} required />
-                <button type="submit" className="btn-primary">Create</button>
+                <div className="form-group">
+                  <label>Project Number:</label>
+                  <input type="text" placeholder="Ex: PRJ-2024-001" value={newProject.project_number} onChange={(e) => setNewProject({...newProject, project_number: e.target.value})} required />
+                </div>
+                <div className="form-group">
+                  <label>Client Name:</label>
+                  <input type="text" placeholder="Ex: John Smith" value={newProject.client_name} onChange={(e) => setNewProject({...newProject, client_name: e.target.value})} required />
+                </div>
+                <button type="submit" className="btn-primary">Create Project</button>
               </form>
             </section>
+
             <section className="card">
-              <h2>📊 Project List</h2>
-              {projects.map(p => <div key={p.id} style={{padding:'10px', borderBottom:'1px solid #eee'}}>{p.project_number} - {p.client_name}</div>)}
+              <h2>📊 Existing Projects</h2>
+              <div className="table-container">
+                <table>
+                  <thead>
+                    <tr><th>Number</th><th>Client</th><th>Date</th></tr>
+                  </thead>
+                  <tbody>
+                    {projects.map((project) => (
+                      <tr key={project.id}>
+                        <td><strong>{project.project_number}</strong></td>
+                        <td>{project.client_name}</td>
+                        <td>{new Date(project.created_at).toLocaleDateString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </section>
           </>
         )}
