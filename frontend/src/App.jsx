@@ -14,7 +14,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('projects')
 
   // CAMBIA AQUÍ TU IP SI CAMBIA EN EL FUTURO
-  const API_BASE_URL = 'http://10.0.0.51:3001';
+  const API_BASE_URL = 'https://opal-backend-om1h.onrender.com';
 
   useEffect(() => {
     loadProjects()
