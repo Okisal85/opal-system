@@ -25,7 +25,9 @@ const pool = new Pool({
     database: process.env.DB_NAME
 });
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(express.json());
 
 const storage = multer.diskStorage({
@@ -222,4 +224,6 @@ function extractLines(text) {
     return lines;
 }
 
-app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server running at http://10.0.0.51:${port}`);
+});
