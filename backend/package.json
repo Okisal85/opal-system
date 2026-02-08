@@ -1,0 +1,19 @@
+{
+  "name": "opal-baths-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "setup": "node setup-db.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "exceljs": "^4.4.0",
+    "express": "^4.22.1",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.4",
+    "pg": "^8.18.0",
+    "qrcode": "^1.5.4"
+  }
+}
