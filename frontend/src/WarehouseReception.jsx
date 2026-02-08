@@ -51,7 +51,7 @@ function WarehouseReception({ projects }) {
 
   const loadStatus = async () => {
     try {
-      const res = await fetch(`http://10.0.0.51:3001/api/projects/${selectedProject}/reception-status`)
+      const res = await fetch(`http://https://opal-backend-om1h.onrender.com/api/projects/${selectedProject}/reception-status`)
       const data = await res.json()
       setProducts(data)
     } catch (e) { console.error("Error loading:", e) }
@@ -59,7 +59,7 @@ function WarehouseReception({ projects }) {
 
   const triggerSearch = async (code) => {
     try {
-      const res = await fetch(`http://10.0.0.51:3001/api/reception/search?q=${code}&projectId=${selectedProject}`)
+      const res = await fetch(`http://https://opal-backend-om1h.onrender.com/api/reception/search?q=${code}&projectId=${selectedProject}`)
       const data = await res.json()
       if (data && data.length > 0) {
         setReceivingItem(data[0])
@@ -79,7 +79,7 @@ function WarehouseReception({ projects }) {
 
   const confirmReceive = async () => {
     try {
-      const res = await fetch('http://10.0.0.51:3001/api/reception/receive', {
+      const res = await fetch('http://https://opal-backend-om1h.onrender.com/api/reception/receive', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
