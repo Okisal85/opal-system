@@ -1,0 +1,54 @@
+.upload-excel-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.upload-excel-container h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.import-result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  color: #155724;
+}
+
+.import-result h3 {
+  margin-top: 0;
+  color: #155724;
+}
+
+.info-box {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #e7f3ff;
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+}
+
+.info-box h4 {
+  margin-top: 0;
+  color: #667eea;
+}
+
+.info-box ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.info-box li {
+  margin-bottom: 0.5rem;
+}
+
+.help-text {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 1rem;
+}
