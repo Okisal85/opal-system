@@ -10,7 +10,7 @@ function App() {
   const [message, setMessage] = useState('')
   const [activeTab, setActiveTab] = useState('projects')
 
-  const API_URL = 'https://opal-backend-om1h.onrender.com';
+  const API_URL = 'https://opal-server-o35b.onrender.com';
 
   useEffect(() => { loadProjects() }, [])
 

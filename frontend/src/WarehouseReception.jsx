@@ -12,7 +12,7 @@ function WarehouseReception({ projects }) {
   const [message, setMessage] = useState('')
   const [scannerActive, setScannerActive] = useState(false)
 
-  const API_URL = 'https://opal-backend-om1h.onrender.com';
+  const API_URL = 'https://opal-server-o35b.onrender.com';
 
   useEffect(() => { if (selectedProject) loadStatus() }, [selectedProject])
 
